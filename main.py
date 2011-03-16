@@ -32,7 +32,7 @@ class BugReportHandler(webapp.RequestHandler):
         db.put()
  
         #report with email
-        mail.send_mail(sender="developer@gmail.com", to="developer@gmail.com", subject="Bug Report", body=bug)
+        #mail.send_mail(sender="developer@gmail.com", to="developer@gmail.com", subject="Bug Report", body=bug)
  
         self.response.out.write('Success!')
  
