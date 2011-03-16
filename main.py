@@ -3,6 +3,7 @@ from google.appengine.ext.webapp import util
 from google.appengine.api import mail
  
 class BugData(db.Model):
+    app_name = db.StringProperty()#application name
     device = db.StringProperty()#device name
     model = db.StringProperty()#model name
     sdk = db.StringProperty()#sdk name
@@ -19,6 +20,7 @@ class BugReportHandler(webapp.RequestHandler):
         self.get_or_post()
  
     def get_or_post(self):
+        app_name = self.request.get("app")
         dev = self.request.get("dev")
         mod = self.request.get("mod")
         sdk = self.request.get("sdk")
@@ -26,7 +28,7 @@ class BugReportHandler(webapp.RequestHandler):
         bug  = self.request.get("bug")
  
         #insert new element
-        db = BugData(device=dev, model=mod, sdk=sdk, version=ver, bug=bug)
+        db = BugData(app_name=app_name, device=dev, model=mod, sdk=sdk, version=ver, bug=bug)
         db.put()
  
         #report with email
