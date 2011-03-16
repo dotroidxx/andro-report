@@ -1,0 +1,9 @@
+application: andro-report
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /bug
+  script: main.py
+
