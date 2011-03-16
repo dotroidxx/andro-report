@@ -26,7 +26,10 @@ class BugReportHandler(webapp.RequestHandler):
         sdk = self.request.get("sdk")
         ver = self.request.get("ver")
         bug  = self.request.get("bug")
- 
+
+        if app_name == None:
+            app_name = "Unknown App"
+
         #insert new element
         db = BugData(app_name=app_name, device=dev, model=mod, sdk=sdk, version=ver, bug=bug)
         db.put()
